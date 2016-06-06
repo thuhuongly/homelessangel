@@ -13,15 +13,15 @@
 					<div class="row">
 						<div class="col-md-8">
 							<h4>
-								<strong><a href="{{url('homeles'.$homeles->nickname.'')}}">{{
+								<strong><a href="{{url('homeless/'.$homeles->id.'')}}">{{
                                         $homeles->nickname }}</a></strong>
 							</h4>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-2">
-							<a href="{{url('homeles/'.$homeles->picture.'')}}" class="thumbnail"><img
-										src="http://placehold.it/260x180" alt=""></a>
+							<a href="{{url($homeles->picture)}}" class="thumbnail"><img
+										src="{{url($homeles->picture)}}" alt=""></a>
 						</div>
 						<div class="col-md-10">
 							<p>{!! $homeles->location !!}</p>

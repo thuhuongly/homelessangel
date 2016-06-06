@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
+use App\Offer;
+use App\User;
 use App\Http\Requests\Homeless\TransactionRequest;
 use Illuminate\Support\Facades\Auth;
 use Datatables;
@@ -22,7 +24,7 @@ class TransactionController extends Controller{
     public function index()
     {
         // Show the page
-        return view('transaction.index');
+        return view('homeless.transaction.index');
     }
 
     /**
@@ -30,9 +32,9 @@ class TransactionController extends Controller{
      *
      * @return Response
      */
-    public function create($offerId)
+    public function create($offer)
     {
-        return view('homeless.transaction.create_edit');
+        return view('homeless.transaction.create_edit', compact('offer'));
     }
 
     /**
@@ -42,11 +44,27 @@ class TransactionController extends Controller{
      */
     public function store(TransactionRequest $request)
     {
-        $transaction = new Transaction($request);
+        $input = $request->input();
+        $transaction = new Transaction($input);
         $transaction -> user_id = Auth::id();
-
         $transaction -> save();
+
+        $offer = Offer::findOrFail($request->input('offer_id'));
+        //send notification
+        $homeless = User::findOrFail(Auth::id());
+        $nickname = $homeless->name;
+        $angel = User::findOrFail($offer->user_id);
+        $angel->newNotification()
+            ->withType('Offer')
+            ->withSubject('Your offer has been requested.')
+            ->withBody($nickname.' has requested items from your offer!')
+            ->regarding($offer)
+            ->deliver();
+
+        // Show the page
+        return view('homeless.transaction.index');
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -79,7 +97,7 @@ class TransactionController extends Controller{
 
     public function delete(Transaction $transaction)
     {
-        return view('transaction.delete', compact('transaction'));
+        return view('homeless.transaction.delete', compact('transaction'));
     }
 
     /**
@@ -103,17 +121,16 @@ class TransactionController extends Controller{
     {
         $transactions = Transaction::get()
             ->map(function ($transaction) {
+                $offer = Offer::findOrFail($transaction->offer_id);
                 return [
                     'id' => $transaction->id,
-                    'type' => $transaction->type,
-                    'category' => $transaction->category,
-                    'description' => $transaction->description,
-                    'amount' => $transaction->amount
+                    'offer' => $offer->type,
+                    'address' => $transaction->address
                 ];
             });
         return Datatables::of($transactions)
-            ->add_column('actions', '<a href="{{{ url(\'transaction/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span>  {{ trans("angel/modal.edit") }}</a>
-                    <a href="{{{ url(\'transaction/\' . $id . \'/delete\' ) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ trans("angel/modal.delete") }}</a>
+            ->add_column('actions', '<a href="{{{ url(\'homeless/transaction/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span>  {{ trans("angel/modal.edit") }}</a>
+                    <a href="{{{ url(\'homeless/transaction/\' . $id . \'/delete\' ) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ trans("angel/modal.delete") }}</a>
                     <input type="hidden" name="row" value="{{$id}}" id="row">')
             ->remove_column('id')
 

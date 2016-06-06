@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Angel;
 
 use App\Http\Controllers\AdminController;
 use App\Offer;
+use App\Angel;
+use App\User;
 use App\OfferCategory;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\Angel\OfferRequest;
@@ -76,6 +78,46 @@ class OfferController extends AdminController {
     }
 
     /**
+     * Accept request
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function accept($offer, $notification)
+    {
+        $current = $offer->amount - 1;
+        $offer->amount = $current;
+
+        $angel = Angel::where('user_id','=',Auth::id())->first();
+        $totalGiven = $angel->totalGiving + 1;
+        $angel->totalGiving =  $totalGiven;
+
+        $angel->update();
+        $offer->update();
+
+        $notification->is_read = 1;
+        $notification->update();
+
+        return view('angel.offer.index', compact('offer'));
+    }
+
+    /**
+     * Reject request
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function reject($offer, $notification)
+    {
+        $notification->is_read = 1;
+        $notification->update();
+        $user = User::find(Auth::id());
+        $unreadNotifications = $user->notifications()->unread()->get();
+
+        return view('user.notifications', compact('unreadNotifications'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  int  $id
@@ -133,7 +175,7 @@ class OfferController extends AdminController {
      */
     public function data()
     {
-        $offers = Offer::get()
+        $offers = Offer::where('user_id','=',Auth::id())->get()
             ->map(function ($offer) {
                 return [
                     'id' => $offer->id,

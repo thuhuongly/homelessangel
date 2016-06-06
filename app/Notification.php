@@ -1,10 +1,9 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
-
-class Notification extends Eloquent
+use Carbon\Carbon;
+class Notification extends Model
 {
     protected $fillable   = ['user_id', 'type', 'subject', 'body', 'object_id', 'object_type', 'sent_at'];
 
@@ -17,7 +16,7 @@ class Notification extends Eloquent
 
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('App\User');
     }
 
     public function withSubject($subject)

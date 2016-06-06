@@ -11,7 +11,7 @@
     <p>{{ $homeless->location }}</p>
     @if($homeless->picture!="")
         <img alt="{{$homeless->picture}}"
-             src="{!! url('homeless'.$homeless->id.'/'.$homeless->picture) !!}"/>
+             src="{!! url($homeless->picture) !!}"/>
     @endif
     <div>
         <span class="badge badge-info">Posted {!!  $homeless->created_at !!} </span>

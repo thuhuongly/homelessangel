@@ -19,15 +19,20 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false"> Offer <i
+                           aria-expanded="false"> Offers <i
                                     class="fa fa-caret-down"></i></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{ url('angel/offer/dashboard') }}">Manage offers</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('angel/offer/dashboard') }}">Donate money</a>
-                            </li>
+                                <a href="{{ url('/offers') }}">Browse offers</a>
+                                </li>
+                            @if(Auth::check())
+                                @if(Auth::user()->admin==2)
+                                        <li>
+                                            <a href="{{ url('angel/offer/dashboard') }}">Manage offers</a>
+                                        </li>
+                                @endif
+                            @endif
+
                         </ul>
                     </li>
                 </ul>
@@ -66,6 +71,11 @@
                                     <li>
                                         <a href="{{ url('user/'. Auth::user()->id. '/edit') }}"><i class="fa fa-tachometer"></i> Edit profile</a>
                                     </li>
+                                    @if(Auth::user()->admin==2)
+                                        <li>
+                                            <a href="{{ url('user/notification') }}"><i class="fa fa-tachometer"></i> Notifications</a>
+                                        </li>
+                                    @endif
                                 @endif
                                 <li role="presentation" class="divider"></li>
                             @endif

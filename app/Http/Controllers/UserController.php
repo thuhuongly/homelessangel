@@ -2,6 +2,7 @@
 
 use App\User;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 use Datatables;
 
 
@@ -37,6 +38,19 @@ class UserController extends Controller
         return view('user.create_edit');
     }
 
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function showNotification()
+    {
+        $user = User::find(Auth::id());
+        $unreadNotifications = $user->notifications()->unread()->get();
+
+        return view('user.notifications', compact('unreadNotifications'));
+    }
     /**
      * Store a newly created resource in storage.
      *

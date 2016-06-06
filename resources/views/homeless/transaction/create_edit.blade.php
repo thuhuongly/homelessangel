@@ -14,14 +14,15 @@
         <!-- Tabs Content -->
 <div class="tab-content">
     <!-- General tab -->
+    <input class="form-control" name="offer_id" type="hidden" id="offer_id" value="{{$offer->id}}">
     <div class="tab-pane active" id="tab-general">
-        <div class="form-group  {{ $errors->has('amount') ? 'has-error' : '' }}">
+       {{-- <div class="form-group  {{ $errors->has('amount') ? 'has-error' : '' }}">
             {!! Form::label('amount', trans("homeless/modal.amount"), array('class' => 'control-label')) !!}
             <div class="controls">
                 {!! Form::text('amount', null, array('class' => 'form-control')) !!}
                 <span class="help-block">{{ $errors->first('amount', ':message') }}</span>
             </div>
-        </div>
+        </div>--}}
         <div class="form-group  {{ $errors->has('address') ? 'has-error' : '' }}">
             {!! Form::label('address', trans("homeless/modal.address"), array('class' => 'control-label')) !!}
             <div class="controls">

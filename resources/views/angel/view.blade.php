@@ -8,10 +8,11 @@
 {{-- Content --}}
 @section('content')
     <h3>{{ $angel->name }}</h3>
-    <p>{!! $angel->address !!}</p>
+    <p>Location: {!! $angel->address !!}</p>
+    <p>Amount of items successfully given: {!! $angel->totalGiving !!}</p>
     @if($angel->picture!=null)
         <img alt="{{$angel->picture}}"
-             src="{!! url('appfiles/angel/'.$angel->id.'/'.$angel->picture) !!}"/>
+             src="{!! url($angel->picture) !!}"/>
     @endif
     <div>
         <span class="badge badge-info">Posted {!!  $angel->created_at !!} </span>

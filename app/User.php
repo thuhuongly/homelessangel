@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notification;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -27,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
     // In your User model - 1 User has Many Notifications
     public function notifications()
     {
-        return $this->hasMany('Notification');
+        return $this->hasMany('App\Notification');
     }
 
     public function newNotification()

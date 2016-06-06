@@ -1,8 +1,9 @@
 <?php
 
 return [
-    'transaction' => 'Offer',
+    'offer' => 'Offer type',
+    'transaction' => 'Transactions',
     'address' => 'Address',
-    'datePickup' => 'Date pick up',
+    'datepickup' => 'Date pick up',
     'amount' => 'Amount',
 ];

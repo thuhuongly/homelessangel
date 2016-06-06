@@ -13,7 +13,6 @@ class TransactionRequest extends FormRequest {
 	{
 		return [
 			'address' => 'required|min:3',
-            'amount' => 'required|numeric',
 		];
 	}
 

@@ -62,7 +62,7 @@
             "processing": true,
             "serverSide": true,
             "order": [],
-            "ajax": "{{ url('angel/offer/data') }}",
+            "ajax": "{{ url('homeless/transaction/data') }}",
             "pagingType": "full_numbers",
             "fnDrawCallback": function (oSettings) {
                 $(".iframe").colorbox({

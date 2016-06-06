@@ -22,6 +22,7 @@ class UserTableSeeder extends Seeder {
 			'username' => 'test_user',
 			'email' => 'user@user.com',
 			'password' => bcrypt('user'),
+			'admin' => 3,
 			'confirmed' => 1,
 			'confirmation_code' => md5(microtime() . env('APP_KEY')),
 		]);
@@ -31,6 +32,7 @@ class UserTableSeeder extends Seeder {
 			'username' => 'linh_nguyen',
 			'email' => 'linh@linh.com',
 			'password' => bcrypt('user'),
+			'admin' => 2,
 			'confirmed' => 1,
 			'confirmation_code' => md5(microtime() . env('APP_KEY')),
 		]);
@@ -40,6 +42,7 @@ class UserTableSeeder extends Seeder {
 			'username' => 'ngan_nguye',
 			'email' => 'ngan@ngan.com',
 			'password' => bcrypt('user'),
+			'admin' => 2,
 			'confirmed' => 1,
 			'confirmation_code' => md5(microtime() . env('APP_KEY')),
 		]);
@@ -49,6 +52,7 @@ class UserTableSeeder extends Seeder {
 			'username' => 'phuong_manh',
 			'email' => 'phuong@phuong.com',
 			'password' => bcrypt('user'),
+			'admin' => 2,
 			'confirmed' => 1,
 			'confirmation_code' => md5(microtime() . env('APP_KEY')),
 		]);
@@ -58,6 +62,7 @@ class UserTableSeeder extends Seeder {
 			'username' => 'lan_anh',
 			'email' => 'lan@anh.com',
 			'password' => bcrypt('user'),
+			'admin' => 2,
 			'confirmed' => 1,
 			'confirmation_code' => md5(microtime() . env('APP_KEY')),
 		]);
@@ -67,6 +72,7 @@ class UserTableSeeder extends Seeder {
 			'username' => 'minh_duc',
 			'email' => 'duc@minh.com',
 			'password' => bcrypt('user'),
+			'admin' => 2,
 			'confirmed' => 1,
 			'confirmation_code' => md5(microtime() . env('APP_KEY')),
 		]);
@@ -76,6 +82,7 @@ class UserTableSeeder extends Seeder {
 			'username' => 'mai_moc',
 			'email' => 'mai@moc.com',
 			'password' => bcrypt('user'),
+			'admin' => 3,
 			'confirmed' => 1,
 			'confirmation_code' => md5(microtime() . env('APP_KEY')),
 		]);
@@ -85,6 +92,7 @@ class UserTableSeeder extends Seeder {
 			'username' => 'thuy_ngoc',
 			'email' => 'thuy@ngoc.com',
 			'password' => bcrypt('user'),
+			'admin' => 3,
 			'confirmed' => 1,
 			'confirmation_code' => md5(microtime() . env('APP_KEY')),
 		]);
@@ -94,6 +102,7 @@ class UserTableSeeder extends Seeder {
 			'username' => 'phuc_vuong',
 			'email' => 'phuc@vuong.com',
 			'password' => bcrypt('user'),
+			'admin' => 3,
 			'confirmed' => 1,
 			'confirmation_code' => md5(microtime() . env('APP_KEY')),
 		]);
@@ -103,6 +112,7 @@ class UserTableSeeder extends Seeder {
 			'username' => 'quynh_hoa',
 			'email' => 'quynh@hoa.com',
 			'password' => bcrypt('user'),
+			'admin' => 3,
 			'confirmed' => 1,
 			'confirmation_code' => md5(microtime() . env('APP_KEY')),
 		]);

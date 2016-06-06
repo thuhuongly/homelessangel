@@ -52,7 +52,7 @@ class Admin implements Middleware {
             {
                 $admin=1;
             }
-            if($admin==0){
+            if($admin==2 || $admin==3){
                 return $this->response->redirectTo('/');
             }
             return $next($request);

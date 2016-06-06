@@ -4,6 +4,7 @@
 Route::model('article', 'App\Article');
 Route::model('offer', 'App\Offer');
 Route::model('transaction', 'App\Transaction');
+Route::model('notification', 'App\Notification');
 Route::model('articlecategory', 'App\ArticleCategory');
 Route::model('language', 'App\Language');
 Route::model('photoalbum', 'App\PhotoAlbum');
@@ -25,7 +26,6 @@ Route::get('offers', 'OffersController@index');
 Route::get('angels', 'AngelsController@index');
 Route::get('homeless', 'HomelessController@index');
 Route::get('offer/{id}', 'OffersController@show');
-Route::get('transaction/{id}', 'TransactionController@show');
 Route::get('angel/{id}', 'AngelsController@show');
 Route::get('homeless/{id}', 'HomelessController@show');
 Route::get('video/{id}', 'VideoController@show');
@@ -59,6 +59,8 @@ Route::group(['prefix' => 'angel'], function() {
 # Offers
     Route::get('offer/data', 'Angel\OfferController@data');
     Route::get('offer/{offer}/show', 'Angel\OfferController@show');
+    Route::get('offer/{offer}/{notification}/accept', 'Angel\OfferController@accept');
+    Route::get('offer/{offer}/{notification}/reject', 'Angel\OfferController@reject');
     Route::get('offer/{offer}/edit', 'Angel\OfferController@edit');
     Route::get('offer/{offer}/delete', 'Angel\OfferController@delete');
     Route::get('offer/reorder', 'Angel\OfferController@getReorder');
@@ -67,6 +69,7 @@ Route::group(['prefix' => 'angel'], function() {
 
 /***************    User routes  **********************************/
 Route::get('user/{user}/edit', 'UserController@edit');
+Route::get('user/notification', 'UserController@showNotification');
 Route::get('user/{user}/delete', 'UserController@delete');
 Route::resource('user', 'UserController');
 
