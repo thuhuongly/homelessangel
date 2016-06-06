@@ -1,16 +1,15 @@
-@extends('homeless.layouts.modal')
+@extends('layouts.app')
 {{-- Content --}}
 @section('content')
         <!-- Tabs -->
 <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab-general" data-toggle="tab"> {{
-			trans("homeless/modal.general") }}</a></li>
+    <li class="active"><a href="#tab-general" data-toggle="tab"> Create new request</a></li>
 </ul>
 <!-- ./ tabs -->
 @if (isset($transaction))
-{!! Form::model($transaction, array('url' => url('homeless/transaction') . '/' . $transaction->id, 'method' => 'put','id'=>'fupload', 'class' => 'bf', 'files'=> true)) !!}
+{!! Form::model($transaction, array('url' => url('homeless/transaction') . '/' . $transaction->id, 'method' => 'put')) !!}
 @else
-{!! Form::open(array('url' => url('homeless/transaction'), 'method' => 'post', 'class' => 'bf','id'=>'fupload', 'files'=> true)) !!}
+{!! Form::open(array('url' => url('homeless/transaction'), 'method' => 'post', 'class' => 'bf')) !!}
 @endif
         <!-- Tabs Content -->
 <div class="tab-content">
@@ -19,22 +18,22 @@
         <div class="form-group  {{ $errors->has('amount') ? 'has-error' : '' }}">
             {!! Form::label('amount', trans("homeless/modal.amount"), array('class' => 'control-label')) !!}
             <div class="controls">
-                {!! Form::text('type', null, array('class' => 'form-control')) !!}
+                {!! Form::text('amount', null, array('class' => 'form-control')) !!}
                 <span class="help-block">{{ $errors->first('amount', ':message') }}</span>
             </div>
         </div>
         <div class="form-group  {{ $errors->has('address') ? 'has-error' : '' }}">
             {!! Form::label('address', trans("homeless/modal.address"), array('class' => 'control-label')) !!}
             <div class="controls">
-                {!! Form::text('category', null, array('class' => 'form-control')) !!}
+                {!! Form::text('address', null, array('class' => 'form-control')) !!}
                 <span class="help-block">{{ $errors->first('address', ':message') }}</span>
             </div>
         </div>
-        <div class="form-group  {{ $errors->has('datePickup') ? 'has-error' : '' }}">
-            {!! Form::label('datePickup', trans("homeless/modal.datePickup"), array('class' => 'control-label')) !!}
+        <div class="form-group  {{ $errors->has('date_pick_up') ? 'has-error' : '' }}">
+            {!! Form::label('date_pick_up', trans("homeless/modal.datePickup"), array('class' => 'control-label')) !!}
             <div class="controls">
-                {!! Form::text('datePickup', null, array('class' => 'form-control')) !!}
-                <span class="help-block">{{ $errors->first('datePickup', ':message') }}</span>
+                {!! Form::date('date_pick_up', null, array('class' => 'form-control')) !!}
+                <span class="help-block">{{ $errors->first('date_pick_up', ':message') }}</span>
             </div>
         </div>
         <!-- ./ general tab -->

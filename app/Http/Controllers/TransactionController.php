@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\AdminController;
 use App\Transaction;
-use App\TransactionCategory;
-use Illuminate\Support\Facades\Input;
-use App\Http\Requests\Angel\TransactionRequest;
+use App\Http\Requests\Homeless\TransactionRequest;
 use Illuminate\Support\Facades\Auth;
 use Datatables;
 
-class TransactionController extends AdminController {
+class TransactionController extends Controller{
 
     public function __construct()
     {
         view()->share('type', 'transaction');
     }
+
      /*
     * Display a listing of the resource.
     *
@@ -46,6 +44,8 @@ class TransactionController extends AdminController {
     {
         $transaction = new Transaction($request);
         $transaction -> user_id = Auth::id();
+
+        $transaction -> save();
     }
     /**
      * Show the form for editing the specified resource.

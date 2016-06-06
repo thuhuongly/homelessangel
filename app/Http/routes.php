@@ -44,7 +44,7 @@ Route::group(['prefix' => 'homeless'], function() {
 # Offers
     Route::get('transaction/data', 'TransactionController@data');
     Route::get('transaction/create/{offer}', 'TransactionController@create');
-    Route::get('transaction/{transaction}/show', 'TransactioNnController@show');
+    Route::get('transaction/{transaction}/show', 'TransactionController@show');
     Route::get('transaction/{transaction}/edit', 'TransactionController@edit');
     Route::get('transaction/{transaction}/delete', 'TransactionController@delete');
     Route::get('transaction/reorder', 'TransactionController@getReorder');
