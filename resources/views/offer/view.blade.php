@@ -15,6 +15,9 @@
     @endif
     <p>{!! $offer->amount !!}</p>
     <div>
+        <a class="btn btn-success" href="{{ url('/homeless/transaction/create/'.$offer->id) }}"> Request</a>
+    </div>
+    <div>
         <span class="badge badge-info">Posted {!!  $offer->created_at !!} </span>
     </div>
 @endsection

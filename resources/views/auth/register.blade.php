@@ -49,6 +49,95 @@
                     <span class="help-block">{{ $errors->first('password_confirmation', ':message') }}</span>
                 </div>
             </div>
+            <div class="form-group  {{ $errors->has('admin') ? 'has-error' : '' }}">
+                {!! Form::label('admin', 'Register as', array('class' => 'control-label')) !!}
+                <div class="controls">
+                    {!! Form::label('admin', trans("admin/users.angel"), array('class' => 'control-label')) !!}
+                    {!! Form::radio('admin', '2', true) !!}
+                    {!! Form::label('admin', trans("admin/users.homeless"), array('class' => 'control-label')) !!}
+                    {!! Form::radio('admin', '3') !!}
+                    <span class="help-block">{{ $errors->first('admin', ':message') }}</span>
+                </div>
+            </div>
+            {{-- Angel --}}
+            <fieldset>
+                <legend><h2>Angel's information</h2></legend>
+                <div class="form-group  {{ $errors->has('a_date_of_birth') ? 'has-error' : '' }}">
+                    {!! Form::label('a_date_of_birth', "Date of birth", array('class' => 'control-label')) !!}
+                    <div class="controls">
+                        {!! Form::date('a_date_of_birth', null, array('class' => 'form-control')) !!}
+                        <span class="help-block">{{ $errors->first('a_date_of_birth', ':message') }}</span>
+                    </div>
+                </div>
+                <div class="form-group  {{ $errors->has('address') ? 'has-error' : '' }}">
+                    {!! Form::label('address', "Address", array('class' => 'control-label')) !!}
+                    <div class="controls">
+                        {!! Form::text('address', null, array('class' => 'form-control')) !!}
+                        <span class="help-block">{{ $errors->first('address', ':message') }}</span>
+                    </div>
+                </div>
+                <div class="form-group  {{ $errors->has('profession') ? 'has-error' : '' }}">
+                    {!! Form::label('profession', "Profession", array('class' => 'control-label')) !!}
+                    <div class="controls">
+                        {!! Form::text('profession', null, array('class' => 'form-control')) !!}
+                        <span class="help-block">{{ $errors->first('profession', ':message') }}</span>
+                    </div>
+                </div>
+
+                <div
+                        class="form-group {!! $errors->has('picture') ? 'error' : '' !!} ">
+                    <div class="col-lg-12">
+                        {!! Form::label('picture', trans("transaction"), array('class' => 'control-label')) !!}
+                        <input name="picture"
+                               type="file" class="uploader" id="picture" value="Upload"/>
+                    </div>
+
+                </div>
+                <div class="form-group  {{ $errors->has('anonymous') ? 'has-error' : '' }}">
+                    {!! Form::label('anonymous', 'Appear as anonymous', array('class' => 'control-label')) !!}
+                    <div class="controls">
+                        {!! Form::label('anonymous', 'No', array('class' => 'control-label')) !!}
+                        {!! Form::radio('anonymous', '0', true) !!}
+                        {!! Form::label('anonymous', 'Yes', array('class' => 'control-label')) !!}
+                        {!! Form::radio('anonymous', '1') !!}
+                        <span class="help-block">{{ $errors->first('anonymous', ':message') }}</span>
+                    </div>
+                </div>
+            </fieldset>
+            {{-- Homeless --}}
+            <fieldset>
+                <legend><h2>Homeless's information</h2></legend>
+                <div class="form-group  {{ $errors->has('date_of_birth') ? 'has-error' : '' }}">
+                    {!! Form::label('date_of_birth', "Date of birth", array('class' => 'control-label')) !!}
+                    <div class="controls">
+                        {!! Form::date('date_of_birth', null, array('class' => 'form-control')) !!}
+                        <span class="help-block">{{ $errors->first('date_of_birth', ':message') }}</span>
+                    </div>
+                </div>
+                <div class="form-group  {{ $errors->has('location') ? 'has-error' : '' }}">
+                    {!! Form::label('location', "Location", array('class' => 'control-label')) !!}
+                    <div class="controls">
+                        {!! Form::text('location', null, array('class' => 'form-control')) !!}
+                        <span class="help-block">{{ $errors->first('location', ':message') }}</span>
+                    </div>
+                </div>
+                <div class="form-group  {{ $errors->has('homeless_years') ? 'has-error' : '' }}">
+                    {!! Form::label('homeless_years', "Amount of years living on the street", array('class' => 'control-label')) !!}
+                    <div class="controls">
+                        {!! Form::text('homeless_years', null, array('class' => 'form-control')) !!}
+                        <span class="help-block">{{ $errors->first('homeless_years', ':message') }}</span>
+                    </div>
+                </div>
+                <div
+                        class="form-group {!! $errors->has('picture') ? 'error' : '' !!} ">
+                    <div class="col-lg-12">
+                        {!! Form::label('hlPicture', trans("angel/offer.picture"), array('class' => 'control-label')) !!}
+                        <input name="hlPicture"
+                               type="file" class="uploader" id="hlPicture" value="Upload"/>
+                    </div>
+
+                </div>
+            </fieldset>
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
                     <button type="submit" class="btn btn-primary">

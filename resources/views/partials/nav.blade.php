@@ -31,6 +31,12 @@
                         </ul>
                     </li>
                 </ul>
+                <li class="{{ (Request::is('/homeless') ? 'active' : '') }}">
+                    <a href="{{ url('/homeless') }}"> Homeless People</a>
+                </li>
+                <li class="{{ (Request::is('/angels') ? 'active' : '') }}">
+                    <a href="{{ url('/angels') }}"> Angel</a>
+                </li>
                 <li class="{{ (Request::is('about') ? 'active' : '') }}">
                     <a href="{{ url('about') }}">About</a>
                 </li>
@@ -58,7 +64,7 @@
                                     </li>
                                 @else
                                     <li>
-                                        <a href="{{ url('angel/dashboard') }}"><i class="fa fa-tachometer"></i> User Dashboard</a>
+                                        <a href="{{ url('user/'. Auth::user()->id. '/edit') }}"><i class="fa fa-tachometer"></i> Edit profile</a>
                                     </li>
                                 @endif
                                 <li role="presentation" class="divider"></li>

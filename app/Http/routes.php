@@ -3,11 +3,14 @@
 /****************   Model binding into route **************************/
 Route::model('article', 'App\Article');
 Route::model('offer', 'App\Offer');
+Route::model('transaction', 'App\Transaction');
 Route::model('articlecategory', 'App\ArticleCategory');
 Route::model('language', 'App\Language');
 Route::model('photoalbum', 'App\PhotoAlbum');
 Route::model('photo', 'App\Photo');
 Route::model('user', 'App\User');
+Route::model('angel', 'App\Angel');
+Route::model('homeless', 'App\Homeless');
 Route::pattern('id', '[0-9]+');
 Route::pattern('slug', '[0-9a-z-_]+');
 
@@ -19,7 +22,12 @@ Route::get('contact', 'PagesController@contact');
 Route::get('articles', 'ArticlesController@index');
 Route::get('article/{slug}', 'ArticlesController@show');
 Route::get('offers', 'OffersController@index');
+Route::get('angels', 'AngelsController@index');
+Route::get('homeless', 'HomelessController@index');
 Route::get('offer/{id}', 'OffersController@show');
+Route::get('transaction/{id}', 'TransactionController@show');
+Route::get('angel/{id}', 'AngelsController@show');
+Route::get('homeless/{id}', 'HomelessController@show');
 Route::get('video/{id}', 'VideoController@show');
 Route::get('photo/{id}', 'PhotoController@show');
 
@@ -27,6 +35,21 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+/***************    Homeless routes  **********************************/
+Route::group(['prefix' => 'homeless'], function() {
+# Angel Dashboard
+    Route::get('transaction/dashboard', 'TransactionController@index');
+
+# Offers
+    Route::get('transaction/data', 'TransactionController@data');
+    Route::get('transaction/create/{offer}', 'TransactionController@create');
+    Route::get('transaction/{transaction}/show', 'TransactioNnController@show');
+    Route::get('transaction/{transaction}/edit', 'TransactionController@edit');
+    Route::get('transaction/{transaction}/delete', 'TransactionController@delete');
+    Route::get('transaction/reorder', 'TransactionController@getReorder');
+    Route::resource('transaction', 'TransactionController');
+});
 
 /***************    Angel routes  **********************************/
 Route::group(['prefix' => 'angel'], function() {
@@ -41,6 +64,11 @@ Route::group(['prefix' => 'angel'], function() {
     Route::get('offer/reorder', 'Angel\OfferController@getReorder');
     Route::resource('offer', 'Angel\OfferController');
 });
+
+/***************    User routes  **********************************/
+Route::get('user/{user}/edit', 'UserController@edit');
+Route::get('user/{user}/delete', 'UserController@delete');
+Route::resource('user', 'UserController');
 
 /***************    Admin routes  **********************************/
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {

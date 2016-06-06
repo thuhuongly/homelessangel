@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Angel;
+use App\Homeless;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -56,10 +58,34 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $angelRole = $data['admin'];
+        $user =  User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
+            'admin' => $data['admin'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        if ($angelRole == 2) {
+           Angel::create([
+               'user_id' => $user->id,
+               'name' => $data['name'],
+               'address' => $data['address'],
+               'profession' => $data['profession'],
+               'date_of_birth' => $data['a_date_of_birth'],
+               'anonymous' => $data['anonymous'],
+               'picture' => $data['picture'] ? null : '',
+           ]);
+        } else {
+            Homeless::create([
+                'user_id' => $user->id,
+                'nickname' => $data['username'],
+                'address' => $data['address'],
+                'location' => $data['location'],
+                'date_of_birth' => $data['date_of_birth'],
+                'picture' => $data['hlPicture']
+            ]);
+        }
+        return $user;
     }
 }

@@ -23,4 +23,18 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    // In your User model - 1 User has Many Notifications
+    public function notifications()
+    {
+        return $this->hasMany('Notification');
+    }
+
+    public function newNotification()
+    {
+        $notification = new Notification;
+        $notification->user()->associate($this);
+
+        return $notification;
+    }
 }

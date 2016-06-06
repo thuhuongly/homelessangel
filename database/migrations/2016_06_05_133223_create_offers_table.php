@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServicesTable extends Migration
+class CreateOffersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-       Schema::create('offers', function (Blueprint $table) {
+        Schema::create('offers', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('type');
@@ -20,9 +20,15 @@ class CreateServicesTable extends Migration
             $table->string('description');
             $table->string('picture')->nullable();
             $table->unsignedInteger('amount');
-            $table->timestamps('expired_date');
+            $table->date('expired_date');
             $table->softDeletes();
             $table->boolean('delivery_method')->default(false);
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
+        });
+
+        Schema::table('offers', function($table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

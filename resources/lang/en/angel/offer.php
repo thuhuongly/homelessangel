@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'offer' => 'Offer',
+    'offer' => 'Offers',
     'type' => 'Type',
     'category' => 'Category',
     'description' => 'Description',
