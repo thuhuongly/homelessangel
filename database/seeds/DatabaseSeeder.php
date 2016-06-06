@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
 		$this->call(LanguageTableSeeder::class);
 		$this->call(ArticleCategoryTableSeeder::class);
 		$this->call(ArticleTableSeeder::class);
-
+        $this->call(AngelsTableSeeder::class);
+        $this->call(HomelessTableSeeder::class);
+        $this->call(OffersTableSeeder::class);
         Model::reguard();
     }
 }

@@ -15,7 +15,7 @@
                         <div class="col-md-8">
                             <h4>
                                 <strong><a href="{{url('offer'.$offer->type.'')}}">{{
-                                        $offer->description }}</a></strong>
+                                        $offer->category }}</a></strong>
                             </h4>
                         </div>
                     </div>
