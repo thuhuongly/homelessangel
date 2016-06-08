@@ -8,8 +8,9 @@ class AngelsController extends Controller {
 
     public function index()
     {
-        $angels = Angel::paginate(5);
-        $angels->setPath('angels/');
+        $query = \Request::get('search');
+        $angels = Angel::where('name','like','%'.$query.'%')->orderBy('name')
+            ->paginate(20);;
 
         return view('angel.index', compact('angels'));
     }
@@ -20,5 +21,4 @@ class AngelsController extends Controller {
 
 		return view('angel.view', compact('angel'));
 	}
-
 }

@@ -9,8 +9,9 @@ class HomelessController extends Controller {
 
     public function index()
     {
-        $homeless = Homeless::paginate(5);
-        $homeless->setPath('homeless/');
+        $query = \Request::get('search');
+        $homeless = Homeless::where('nickname','like','%'.$query.'%')->orderBy('nickname')
+            ->paginate(20);;
 
         return view('homeless.index', compact('homeless'));
     }

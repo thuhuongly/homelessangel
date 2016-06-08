@@ -5,10 +5,23 @@
 @endsection
 
 @section('content')
+	{!! Form::open(['method'=>'GET','url'=>'offers','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
+
+	<div class="input-group custom-search-form">
+		<input type="text" class="form-control" name="search" placeholder="Search by category...">
+			<span class="input-group-btn">
+				<button class="btn btn-default-sm" type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+			</span>
+	</div>
+	{!! Form::close() !!}
+
+	{!! Form::open(['method'=>'GET','url'=>'offers','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
 	@if(count($offers)>0)
 		<div class="row">
 			<h2>Available offers</h2>
-			@foreach ($offers as $offer)
+		@foreach ($offers as $offer)
 				<div class="col-md-6">
 					<div class="row">
 						<div class="col-md-8">
@@ -44,5 +57,8 @@
 				</div>
 			@endforeach
 		</div>
+
+	@else
+		<h2>No results</h2>
 	@endif
 @endsection

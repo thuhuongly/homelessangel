@@ -83,7 +83,7 @@ class AuthController extends Controller
                 'address' => $data['address'],
                 'location' => $data['location'],
                 'date_of_birth' => $data['date_of_birth'],
-                'picture' => $data['hlPicture']
+                'picture' => $data['hlPicture'] ? null : '',
             ]);
         }
         return $user;

@@ -87,7 +87,7 @@
                 <div
                         class="form-group {!! $errors->has('picture') ? 'error' : '' !!} ">
                     <div class="col-lg-12">
-                        {!! Form::label('picture', trans("transaction"), array('class' => 'control-label')) !!}
+                        {!! Form::label('picture', trans("picture"), array('class' => 'control-label')) !!}
                         <input name="picture"
                                type="file" class="uploader" id="picture" value="Upload"/>
                     </div>
@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 <div
-                        class="form-group {!! $errors->has('picture') ? 'error' : '' !!} ">
+                        class="form-group {!! $errors->has('hlPicture') ? 'error' : '' !!} ">
                     <div class="col-lg-12">
                         {!! Form::label('hlPicture', trans("angel/offer.picture"), array('class' => 'control-label')) !!}
                         <input name="hlPicture"

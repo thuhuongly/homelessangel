@@ -8,8 +8,11 @@ class OffersController extends Controller {
 
     public function index()
     {
-        $offers = Offer::paginate(5);
-        $offers->setPath('offers/');
+
+        $query = \Request::get('search');
+        print($query);
+        $offers = Offer::where('category','like','%'.$query.'%')->orderBy('type')
+            ->paginate(20);;
 
         return view('offer.index', compact('offers'));
     }
