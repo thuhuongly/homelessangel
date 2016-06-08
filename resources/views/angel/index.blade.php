@@ -25,10 +25,17 @@
 				<div class="col-md-6">
 					<div class="row">
 						<div class="col-md-8">
-							<h4>
-								<strong><a href="{{url('angel/'.$angel->id.'')}}">{{
+							@if($angel->anonymous==0)
+								<h4>
+									<strong><a href="{{url('angel/'.$angel->id.'')}}">{{
                                         $angel->name }}</a></strong>
-							</h4>
+								</h4>
+							@else
+								<h4>
+									<strong><a href="{{url('angel/'.$angel->id.'')}}">Anonymous</a></strong>
+								</h4>
+							@endif
+
 						</div>
 					</div>
 					<div class="row">

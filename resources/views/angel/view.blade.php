@@ -11,12 +11,16 @@
         <img alt="{{$angel->picture}}"
              src="{!! url($angel->picture) !!}"/>
     @endif
-    <h3>{{ $angel->name }}</h3>
-    <p>Location: {!! $angel->address !!}</p>
-    <p>Amount of items successfully given: {!! $angel->totalGiving !!}</p>
+    @if($angel->anonymous==0)
+        <h3>{{ $angel->name }}</h3>
+        @else
+        <h3>Anonymous</h3>
+    @endif
+    <h4><b>Location:</b> {!! $angel->address !!}</h4>
+    <h4><b>Amount of items successfully given:</b> {!! $angel->totalGiving !!}</h4>
+    <h4><b>Items offered:</b></h4>
     @if(count($offers)>0)
         <div class="row">
-            <p>Available offers</p>
             @foreach ($offers as $offer)
                 <div class="col-md-6">
                     <div class="row">
