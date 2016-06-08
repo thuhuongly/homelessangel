@@ -1,6 +1,6 @@
 @extends('layouts.app')
 {{-- Web site Title --}}
-@section('title') {!!  $angel->name !!} :: @parent @endsection
+@section('title') Angel :: @parent @endsection
 
 @section('meta_author')
     <meta name="author" content="{!! $angel->username !!}"/>
