@@ -14,6 +14,7 @@ return [
     'view_detail' => 'View Details',
     'news_categories' => 'Article categories',
     'news_items' => 'Article items',
+	'offers_items' => 'Offer items',
     'photo_albums' => 'Photo albums',
     'photo_items' => 'Photo items',
     'users' => 'Users',

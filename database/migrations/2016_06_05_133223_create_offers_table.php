@@ -28,7 +28,7 @@ class CreateOffersTable extends Migration
         });
 
         Schema::table('offers', function($table) {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -86,13 +86,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('language/{language}/delete', 'Admin\LanguageController@delete');
     Route::resource('language', 'Admin\LanguageController');
 
-    # Article category
-    Route::get('articlecategory/data', 'Admin\ArticleCategoriesController@data');
-    Route::get('articlecategory/{articlecategory}/show', 'Admin\ArticleCategoriesController@show');
-    Route::get('articlecategory/{articlecategory}/edit', 'Admin\ArticleCategoriesController@edit');
-    Route::get('articlecategory/{articlecategory}/delete', 'Admin\ArticleCategoriesController@delete');
-    Route::get('articlecategory/reorder', 'ArticleCategoriesController@getReorder');
-    Route::resource('articlecategory', 'Admin\ArticleCategoriesController');
+    # Offers
+    Route::get('offer/data', 'Admin\OfferController@data');
+    Route::get('offer/{offer}/show', 'Admin\OfferController@show');
+    Route::get('offer/{offer}/edit', 'Admin\OfferController@edit');
+    Route::get('offer/{offer}/delete', 'Admin\OfferController@delete');
+    Route::get('offer/reorder', 'Admin\OfferController@getReorder');
+    Route::resource('offer', 'Admin\OfferController');
 
     # Articles
     Route::get('article/data', 'Admin\ArticleController@data');
