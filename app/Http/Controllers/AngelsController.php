@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Angel;
+use App\Offer;
 
 class AngelsController extends Controller {
 
@@ -18,7 +19,7 @@ class AngelsController extends Controller {
 	public function show($id)
 	{
 		$angel = Angel::findOrFail($id);
-
-		return view('angel.view', compact('angel'));
+        $offers = Offer::where('user_id','=',$angel->user_id)->get();
+		return view('angel.view', compact('angel', 'offers'));
 	}
 }
