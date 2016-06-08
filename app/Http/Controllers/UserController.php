@@ -106,6 +106,7 @@ class UserController extends Controller
 
     public function delete(User $user)
     {
+        $user->delete();
         return view('user.delete', compact('user'));
     }
 

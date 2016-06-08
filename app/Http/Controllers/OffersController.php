@@ -11,7 +11,7 @@ class OffersController extends Controller {
 
         $query = \Request::get('search');
         print($query);
-        $offers = Offer::where('category','like','%'.$query.'%')->orderBy('type')
+        $offers = Offer::where('category','like','%'.$query.'%')->where('amount', '>', 0)->orderBy('type')
             ->paginate(20);;
 
         return view('offer.index', compact('offers'));

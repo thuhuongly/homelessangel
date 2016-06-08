@@ -51,16 +51,7 @@
                 <span class="help-block">{{ $errors->first('password_confirmation', ':message') }}</span>
             </div>
         </div>
-        <div class="form-group  {{ $errors->has('confirmed') ? 'has-error' : '' }}">
-            {!! Form::label('confirmed', trans("admin/users.active_user"), array('class' => 'control-label')) !!}
-            <div class="controls">
-                {!! Form::label('confirmed', trans("admin/users.yes"), array('class' => 'control-label')) !!}
-                {!! Form::radio('confirmed', '1', @isset($user)? $user->confirmed : 'false') !!}
-                {!! Form::label('confirmed', trans("admin/users.no"), array('class' => 'control-label')) !!}
-                {!! Form::radio('confirmed', '0', @isset($user)? $user->confirmed : 'true') !!}
-                <span class="help-block">{{ $errors->first('confirmed', ':message') }}</span>
-            </div>
-        </div>
+
     </div>
     <div class="form-group">
         <div class="col-md-12">
