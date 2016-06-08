@@ -19,7 +19,7 @@ class AngelsController extends Controller {
 	public function show($id)
 	{
 		$angel = Angel::findOrFail($id);
-        $offers = Offer::where('user_id','=',$angel->user_id)->get();
+        $offers = Offer::where('user_id','=',$angel->user_id)->where('amount', '>', 0)->get();
 		return view('angel.view', compact('angel', 'offers'));
 	}
 }
