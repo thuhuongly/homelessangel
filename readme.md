@@ -1,6 +1,5 @@
-# Laravel Framework 5.1  Bootstrap 3 Starter Site
-
-## Starter Site based on on Laravel 5.1 and Boostrap 3
+# Homeless Angel
+## This project is based on [Laravel 5.1 and Boostrap 3 starter site](https://github.com/mrakodol/Laravel-5-Bootstrap-3-Starter-Site)
 * [Features](#feature1)
 * [Requirements](#feature2)
 * [How to install](#feature3)
@@ -54,9 +53,9 @@
 
 -----
 <a name="step1"></a>
-### Step 1: Get the code - Download the repository
+### Step 1: Get the code
 
-    https://github.com/mrakodol/Laravel-5-Bootstrap-3-Starter-Site/archive/master.zip
+    git clone git@github.com:thuhuongly/homelessangel.git
 
 Extract it in www(or htdocs if you using XAMPP) folder and put it for example in laravel5startersite folder.
 
@@ -149,24 +148,4 @@ This is free software distributed under the terms of the MIT license
 <a name="feature7"></a>
 ## Additional information
 
-Inspired by and based on [andrew13's Laravel-4-Bootstrap-Starter-Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site)
-
-----
-<a name="feature8"></a>
-##How Starter Site is look like
-
-![Index](http://i57.tinypic.com/2yug28x.jpg)
-![Login](http://i58.tinypic.com/r7p4et.jpg)
-![Register new user](http://i61.tinypic.com/fvcz5x.jpg)
-![Admin dashboard](http://i58.tinypic.com/b9g2g1.jpg)
-![Admin users](http://i60.tinypic.com/301hemp.jpg)
-![Admin list users](http://i58.tinypic.com/2ujl5dh.jpg)
-
-----
-<a name="feature9"></a>
-## Advanced alternatives
-If you are interested in advanced starter sites where you can get 70+ admin pages, 20+ frontend pages with color schemes and a CRUD generator then visit below links
-
-[Josh](http://goo.gl/Mnhunr)
-
-[Chandra](http://goo.gl/hk4ut3)
+Inspired by and based on [Laravel Framework 5.1 Bootstrap 3 Starter Site](https://github.com/mrakodol/Laravel-5-Bootstrap-3-Starter-Site)
